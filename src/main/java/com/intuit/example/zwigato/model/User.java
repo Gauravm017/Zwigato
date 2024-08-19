@@ -31,7 +31,7 @@ public class User {
     @Setter
     private List<Order> orders;
 
-    protected User() {}
+    public User() {}
 
     public User(String name, String email){
         this.name=name;

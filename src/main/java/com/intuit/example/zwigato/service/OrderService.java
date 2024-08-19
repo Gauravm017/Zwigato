@@ -77,12 +77,13 @@ public class OrderService {
                     lock.unlock();
                 }
 
+            }else{
+                throw new RuntimeException("No User Found");
             }
         } catch (Exception e) {
            log.error("error in placing the order", e);
             throw e;
         }
-        return null;
     }
 
     public void processfilters(List<MenuItem> menuItems){
