@@ -49,7 +49,7 @@ public class OrderService {
                 List<MenuItem> menuItems = menuItemRepository.findAllById(items.keySet());
 
                 //Checking the order if possible
-                processfilters(menuItems);
+                processFilters(menuItems);
 
                 List<Restaurant> selectedRestaurants = new ArrayList<>();
 
@@ -86,7 +86,7 @@ public class OrderService {
         }
     }
 
-    public void processfilters(List<MenuItem> menuItems){
+    public void processFilters(List<MenuItem> menuItems){
         List<RestaurantMenuItem> restaurantMenuItems = menuItems.stream()
                 .flatMap(menuItem -> menuItem.getRestaurantMenuItem().stream()).toList();
 

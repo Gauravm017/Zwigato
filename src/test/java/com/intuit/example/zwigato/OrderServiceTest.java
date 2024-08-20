@@ -117,7 +117,7 @@ class OrderServiceTest {
         when(filterServices.stream()).thenReturn(Stream.of(filterInterface));
 
         // Act
-        orderService.processfilters(Collections.singletonList(menuItem));
+        orderService.processFilters(Collections.singletonList(menuItem));
 
         // Assert
         verify(filterInterface, times(1)).checkForCondition(anyList(), anyList());
@@ -140,7 +140,7 @@ class OrderServiceTest {
         when(filterServices.stream()).thenReturn(Stream.of(filterInterface));
 
         // Act & Assert
-        assertThrows(OrderProcessingException.class, () -> orderService.processfilters(Collections.singletonList(menuItem)));
+        assertThrows(OrderProcessingException.class, () -> orderService.processFilters(Collections.singletonList(menuItem)));
     }
 
     @Test

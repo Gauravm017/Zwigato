@@ -1,5 +1,6 @@
 package com.intuit.example.zwigato.strategy;
 
+import com.intuit.example.zwigato.exception.OrderProcessingException;
 import com.intuit.example.zwigato.model.MenuItem;
 import com.intuit.example.zwigato.model.Restaurant;
 import com.intuit.example.zwigato.model.RestaurantMenuItem;
@@ -20,6 +21,9 @@ public class LowerCostStrategy implements RestaurantSelectionStrategy {
                     return restaurant.getCurrentProcessingLoad() + quantity <= restaurant.getMaxCapacity();
                 })
                 .toList();
+        if(availableItems.isEmpty()){
+            throw new OrderProcessingException("Maximum capacity reached unable to process the order.");
+        }
         return availableItems.stream()
                 .min(Comparator.comparingDouble(RestaurantMenuItem::getPrice))
                 .map(RestaurantMenuItem::getRestaurant)

@@ -10,8 +10,6 @@ import java.util.concurrent.Executors;
 
 @Slf4j
 public class ThreadConfigManager {
-    public static final ExecutorService DEFAULT_POOL = Executors.newCachedThreadPool();
-
     public static void runAsync(String orderId, Runnable runnable) {
         ExecutorService executor = Executors.newVirtualThreadPerTaskExecutor();
         Runnable overRiddenRunnable = getOverriddenRunnable(orderId, runnable);
