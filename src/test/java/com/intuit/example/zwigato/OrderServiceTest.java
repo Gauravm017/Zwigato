@@ -73,9 +73,15 @@ class OrderServiceTest {
         RestaurantMenuItem restaurantMenuItem = new RestaurantMenuItem();
         restaurantMenuItem.setRestaurant(restaurant);
         restaurantMenuItem.setPrice(100.0);
+
+        restaurant.setRestaurantMenuItem(Collections.singletonList(restaurantMenuItem));
+        menuItem.setRestaurantMenuItem(Collections.singleton(restaurantMenuItem));
+        restaurantMenuItem.setMenuItem(menuItem);
+        restaurantMenuItem.setRestaurant(restaurant);
+
         when(menuItemRepository.findAllById(items.keySet())).thenReturn(Collections.singletonList(menuItem));
         when(restaurantSelectionStrategy.selectRestaurant(any(), anyInt())).thenReturn(restaurant);
-        when(restaurant.getRestaurantMenuItem()).thenReturn(Collections.singletonList(restaurantMenuItem));
+        //when(restaurant.getRestaurantMenuItem()).thenReturn(Collections.singletonList(restaurantMenuItem));
         when(orderRepository.save(any(Order.class))).thenAnswer(invocation -> invocation.getArgument(0));
 
         // Act

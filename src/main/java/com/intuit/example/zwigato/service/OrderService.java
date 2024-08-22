@@ -141,7 +141,7 @@ public class OrderService {
                 orderItem.setPrice(restaurantMenuItem.getPrice());
                 orderItems.add(orderItem);
 
-                order.setTotalBill(order.getTotalBill()+restaurantMenuItem.getPrice());
+                order.setTotalBill(order.getTotalBill()+(restaurantMenuItem.getPrice()*quantity));
                 }
         }
         order.setItems(orderItems);
